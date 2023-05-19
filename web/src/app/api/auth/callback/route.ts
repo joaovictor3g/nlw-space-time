@@ -1,3 +1,4 @@
+import { tokenName } from "@/constants/token";
 import { api } from "@/lib/api";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -19,7 +20,7 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.redirect(redirectUrl, {
     headers: {
-      "Set-Cookie": `nlw-spacetime-token=${token}; Path=/; max-age=${cookieExpiresInSeconds}`,
+      "Set-Cookie": `${tokenName}=${token}; Path=/; max-age=${cookieExpiresInSeconds}`,
     },
   });
 }
