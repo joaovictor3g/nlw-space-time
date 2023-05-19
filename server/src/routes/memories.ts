@@ -13,7 +13,7 @@ export async function memoriesRoutes(app: FastifyInstance) {
         userId: request.user.sub,
       },
       orderBy: {
-        createAt: "asc",
+        createdAt: "asc",
       },
     });
 
@@ -21,6 +21,8 @@ export async function memoriesRoutes(app: FastifyInstance) {
       id: memory.id,
       coverUrl: memory.coverUrl,
       excerpt: memory.content.substring(0, 115).concat("..."),
+      createdAt: memory.createdAt,
+      isPublic: memory.isPublic,
     }));
   });
 
