@@ -2,7 +2,11 @@
 
 import { ChangeEvent, useState } from "react";
 
-export function MediaPicker() {
+interface MediaPickerProps {
+  initialPreview?: string;
+}
+
+export function MediaPicker({ initialPreview }: MediaPickerProps) {
   const [preview, setPreview] = useState<string | null>(null);
   const [previewVideo, setPreviewVideo] = useState<string | null>(null);
 
@@ -29,10 +33,10 @@ export function MediaPicker() {
         accept="image/*,video/*"
       />
 
-      {preview && (
+      {(initialPreview || preview) && (
         // eslint-disable-next-line
         <img
-          src={preview}
+          src={initialPreview ?? preview}
           alt=""
           className="aspect-video w-full rounded-lg object-cover"
         />

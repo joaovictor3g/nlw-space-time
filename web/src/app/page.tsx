@@ -12,6 +12,8 @@ interface MemoryProps {
   isPublic: boolean;
 }
 
+export const cache = "no-store";
+
 export default async function Home() {
   const isAuthenticated = cookies().has(tokenName);
 
